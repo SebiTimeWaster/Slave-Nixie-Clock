@@ -19,8 +19,8 @@ This is an Arduino sketch to control a "GRA &amp; AFCH" NCM107 + NCT412 Nixie cl
  
 ##### And a 2 byte long color cycling string terminated with a newline:
 
- * char 0-1: A hex value from 00 to FF representing the speed of a LED color cycling animation between 133 and 0.52 seconds long
- 
+ * char 0-1: A hex value from 00 to FF representing the speed of a LED color cycling animation between 133 and 0.52 seconds long, "00" turns it off
+
 The color cycling animation overwrites the led color set by the display string.
 
 ## Installation
