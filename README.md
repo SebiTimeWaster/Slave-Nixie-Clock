@@ -23,6 +23,8 @@ This is an Arduino sketch to control a "GRA &amp; AFCH" NCM107 + NCT412 Nixie cl
 
 The color cycling animation overwrites the led color set by the display string.
 
+When no serial string is received for longer than 60 seconds a 20 second cathode cleaning cycle starts and after that it turns the display "off" meaning no refresh is done anymore. when at some point a new serial string is received the display turns on again.
+
 ## Installation
 Download a release or clone this project with git. 
 
