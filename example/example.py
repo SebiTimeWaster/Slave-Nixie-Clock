@@ -22,7 +22,6 @@
   *  SOFTWARE.
   */
 
-
 import serial
 import time
 from datetime import datetime
@@ -45,6 +44,8 @@ def connectNixie():
 def disconnectNixie():
   global mySerial
   sendData('xxxxxx') # empty display
+  if(colorAnimation):
+    sendColorAnimation(0) # stop color animation
   time.sleep(0.1)
   mySerial.close()
 
@@ -58,7 +59,10 @@ def sendData(string, dot = 0, color = 0):
 def setColorAnimation():
   if(colorAnimation):
     time.sleep(3)
-    mySerial.write("05\n".encode('ascii')) # hex string representing the color cycle speed
+    sendColorAnimation(5) # color cycle speed
+
+def sendColorAnimation(speed):
+  mySerial.write((("%0.2x" % speed) + "\n").encode('ascii')) # send hex string representing the color cycle speed
 
 def getDelay():
   global interval
