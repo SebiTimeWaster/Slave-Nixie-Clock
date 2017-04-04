@@ -39,5 +39,6 @@ For more information about the Nixie Clock itself see the [GRA & AFCH Website](h
 Changelog v0.2:
 * Fixed some small bugs
 * Added example Python script
+
 Changelog v0.1:
 * Initial checkin
