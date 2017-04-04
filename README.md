@@ -31,7 +31,9 @@ Download a release or clone this project with git.
 ## Usage
 Open "Slave_Nixie_Clock/Slave_Nixie_Clock.ino" in your Arduino IDE of choice and upload it to your clock.
 
-For more information see: [afch/NixieClock](https://github.com/afch/NixieClock)
+In /examples you will find an example python script to control the Nixie Clock (It sends the computer time to the Nixie Clock). It comes without any guarantee (It was only tested under OS X), if you want to create your own scripts on top of it please don't ask me for support.
+
+For more information about the Nixie Clock itself see: [GRA & AFCH Website](http://gra-afch.com/) [afch/NixieClock GitHub Repo](https://github.com/afch/NixieClock)
 
 ## Changelog
 Changelog v0.1:
