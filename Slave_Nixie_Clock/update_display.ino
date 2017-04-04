@@ -30,9 +30,11 @@ void setLight() {
   if(displayBuffer != displayOldBuffer) {
     digitalWrite(pinUpperDots, displayBuffer.substring(6, 7) == "1" ? HIGH : LOW);
     digitalWrite(pinLowerDots, displayBuffer.substring(7, 8) == "1" ? HIGH : LOW);
-    analogWrite(pinRLed, hexStringToByte(displayBuffer, 8)); 
-    analogWrite(pinGLed, hexStringToByte(displayBuffer, 10));
-    analogWrite(pinBLed, hexStringToByte(displayBuffer, 12));
+    if(colorAnimationSpeed == 0) {
+      analogWrite(pinRLed, hexStringToByte(displayBuffer, 8)); 
+      analogWrite(pinGLed, hexStringToByte(displayBuffer, 10));
+      analogWrite(pinBLed, hexStringToByte(displayBuffer, 12));
+    }
     displayOldBuffer = displayBuffer;
   }
 }
