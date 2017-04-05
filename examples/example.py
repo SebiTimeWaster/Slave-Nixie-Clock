@@ -1,26 +1,25 @@
-/**
-  *  The MIT License (MIT)
-  *
-  *  Slave Nixie Clock v0.2 Copyright (c) 2017 SebiTimeWaster
-  *
-  *  Permission is hereby granted, free of charge, to any person obtaining a copy
-  *  of this software and associated documentation files (the "Software"), to deal
-  *  in the Software without restriction, including without limitation the rights
-  *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  *  copies of the Software, and to permit persons to whom the Software is
-  *  furnished to do so, subject to the following conditions:
-  *
-  *  The above copyright notice and this permission notice shall be included in all
-  *  copies or substantial portions of the Software.
-  *
-  *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  *  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  *  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  *  SOFTWARE.
-  */
+#  The MIT License (MIT)
+#
+#  Slave Nixie Clock Copyright (c) 2017 SebiTimeWaster
+#
+#  Permission is hereby granted, free of charge, to any person obtaining a copy
+#  of this software and associated documentation files (the "Software"), to deal
+#  in the Software without restriction, including without limitation the rights
+#  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+#  copies of the Software, and to permit persons to whom the Software is
+#  furnished to do so, subject to the following conditions:
+#
+#  The above copyright notice and this permission notice shall be included in all
+#  copies or substantial portions of the Software.
+#
+#  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+#  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+#  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+#  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+#  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+#  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+#  SOFTWARE.
+
 
 import serial
 import time
@@ -29,10 +28,13 @@ import signal
 import sys
 
 
-usbPort        = '/dev/tty.usbserial-DN02IORF' # The serial port to use, under Linux and OS X something like "/dev/tty.usbserial" and under Windows something like "COM1"
-dots           = ['00', '10', '01', '11']      # All possible dot combinations, unfortunately the clock is only able to witch the upper and lower dots together
-colors         = ['000000', 'ffffff']          # Add as many colors as you want in 3-byte hex format
-colorAnimation = True                          # Set this to False to switch off the annoying color cycle animation ^^
+usbPort        = ''                       # The serial port to use
+                                          # Linux example: '/dev/ttyUSB0'
+                                          # OS X example: '/dev/tty.usbserial-DN02IORF'
+                                          # Windows example: 'COM1'
+dots           = ['00', '10', '01', '11'] # All possible dot combinations, unfortunately the clock is only able to switch the upper and lower dots together
+colors         = ['000000', 'ffffff']     # Add as many colors as you want in 3-byte hex format
+colorAnimation = True                     # Set this to False to switch off the annoying color cycle animation ^^
 mySerial       = 0
 interval       = 0
 
