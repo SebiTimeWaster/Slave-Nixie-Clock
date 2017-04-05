@@ -36,6 +36,9 @@ In /examples you will find an example Python script to control the Nixie Clock (
 For more information about the Nixie Clock itself see the [GRA & AFCH Website](http://gra-afch.com/) and the [afch/NixieClock GitHub Repo](https://github.com/afch/NixieClock)
 
 ## Changelog
+Changelog v0.2.1:
+* Fixed example comments
+
 Changelog v0.2:
 * Fixed some small bugs
 * Added example Python script
