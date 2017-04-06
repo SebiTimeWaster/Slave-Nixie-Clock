@@ -1,7 +1,7 @@
 /**
   *  The MIT License (MIT)
   *
-  *  Slave Nixie Clock v0.1 Copyright (c) 2017 SebiTimeWaster
+  *  Slave Nixie Clock - Copyright (c) 2017 SebiTimeWaster
   *
   *  Permission is hereby granted, free of charge, to any person obtaining a copy
   *  of this software and associated documentation files (the "Software"), to deal

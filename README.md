@@ -31,8 +31,22 @@ Download a release or clone this project with git.
 ## Usage
 Open "Slave_Nixie_Clock/Slave_Nixie_Clock.ino" in your Arduino IDE of choice and upload it to your clock.
 
-For more information see: [afch/NixieClock](https://github.com/afch/NixieClock)
+In "/examples" you will find an example Python script to control the Nixie Clock (It sends the computer time to the Nixie Clock). It comes without any guarantee (It was only tested under OS X), if you want to create your own scripts on top of it please don't ask me for support.
+
+In "/45 degree Stand" you will find a printable 3D model for a stand to angle the clock at 45°, which makes it much more readable when it is sitting on your desk. Just print the .stl file on your 3D printer of choice.
+
+For more information about the Nixie Clock itself see the [GRA & AFCH Website](http://gra-afch.com/) and the [afch/NixieClock GitHub Repo](https://github.com/afch/NixieClock)
 
 ## Changelog
+Changelog v0.3:
+* Added Stand 3D model
+
+Changelog v0.2.1:
+* Fixed example comments
+
+Changelog v0.2:
+* Fixed some small bugs
+* Added example Python script
+
 Changelog v0.1:
 * Initial checkin
