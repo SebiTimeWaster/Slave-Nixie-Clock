@@ -1,7 +1,7 @@
 # Slave-Nixie-Clock
 Software to control a "GRA &amp; AFCH" NCM107 + NCT412 Nixie clock via a serial connection
 
-!["GRA &amp; AFCH" NCM107 + NCT412](https://github.com/SebiTimeWaster/Slave-Nixie-Clock/blob/master/NixieClock.jpg)
+!["GRA &amp; AFCH" NCM107 + NCT412](https://github.com/SebiTimeWaster/Slave-Nixie-Clock/blob/master/Nixie1.png)
 
 ## What it does
 This is an Arduino sketch to control a "GRA &amp; AFCH" NCM107 + NCT412 Nixie clock via serial protocol, basically turning it into a computer display (While ignoring the RTC functionality).
