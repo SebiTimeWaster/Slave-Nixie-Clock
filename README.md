@@ -38,6 +38,9 @@ In "/45 degree Stand" you will find a printable 3D model for a stand to angle th
 For more information about the Nixie Clock itself see the [GRA & AFCH Website](http://gra-afch.com/) and the [afch/NixieClock GitHub Repo](https://github.com/afch/NixieClock)
 
 ## Changelog
+Changelog v0.3:
+* Added Stand 3D model
+
 Changelog v0.2.1:
 * Fixed example comments
 
