@@ -34,46 +34,68 @@ usbPort        = ''                       # The serial port to use
                                           # Windows example: 'COM1'
 dots           = ['00', '10', '01', '11'] # All possible dot combinations, unfortunately the clock is only able to switch the upper and lower dots together
 colors         = ['000000', 'ffffff']     # Add as many colors as you want in 3-byte hex format
-colorAnimation = True                     # Set this to False to switch off the annoying color cycle animation ^^
+colorAnimation = 5                        # The number defines the speed (0-255), set this to 0 to switch off the annoying color cycle animation
 mySerial       = 0
-interval       = 0
+timeBase       = 0
+connected      = 0                        # 0=never connected;  1=connected;  2=disconnected
 
 
 def connectNixie():
-  global mySerial
-  mySerial = serial.Serial(usbPort, 115200, timeout = 1)
+  global mySerial, connected
+  try:
+    mySerial = serial.Serial(usbPort, 115200, timeout = 1)
+    connected = 1
+    setColorAnimation()
+    setTimeBase()
+  except:
+    if connected == 0: # if never connected exit
+      raise
+    else: # if already was connected try again
+      connected = 2
 
 def disconnectNixie():
-  global mySerial
   sendData('xxxxxx') # empty display
-  if(colorAnimation):
+  if(colorAnimation > 0):
     sendColorAnimation(0) # stop color animation
   time.sleep(0.1)
   mySerial.close()
+
+def reconnectNixie():
+  global timeBase
+  mySerial.close()
+  time.sleep(10) # wait 10 seconds and try to reconnect
+  connectNixie()
 
 def getTimeString():
   return datetime.now().strftime("%H%M%S")
 
 def sendData(string, dot = 0, color = 0):
-  global mySerial
-  mySerial.write((string + dots[dot] + colors[color] + "\n").encode('ascii'))
+  global connected
+  try:
+    mySerial.write((string + dots[dot] + colors[color] + "\n").encode('ascii'))
+  except:
+    connected = 2
 
 def setColorAnimation():
-  if(colorAnimation):
+  if(colorAnimation > 0):
     time.sleep(3)
-    sendColorAnimation(5) # color cycle speed
+    sendColorAnimation(colorAnimation) # color cycle speed
 
 def sendColorAnimation(speed):
-  mySerial.write((("%0.2x" % speed) + "\n").encode('ascii')) # send hex string representing the color cycle speed
+  global connected
+  try:
+    mySerial.write((("%0.2x" % speed) + "\n").encode('ascii')) # send hex string representing the color cycle speed
+  except:
+    connected = 2
 
-def getDelay():
-  global interval
-  interval += 1
-  return max(interval - time.time(), 0) # if negative say 0 to catch up to real time
+def getRealDelay(desiredDelay):
+  global timeBase
+  timeBase += desiredDelay
+  return max(timeBase - time.time(), 0) # if negative say 0 to catch up to real time
 
-def setInterval():
-  global interval
-  interval = int(time.time()) + 0.1 # enforce 100 ms after the second
+def setTimeBase():
+  global timeBase
+  timeBase = int(time.time()) + 0.1 # enforce 100 ms after the second
 
 def signalHandler(signal, frame):
   disconnectNixie()
@@ -87,13 +109,14 @@ def handleCtrlC():
 # init script
 handleCtrlC()
 connectNixie()
-setColorAnimation()
-setInterval()
 
 # endless loop (until script exits)
 while True:
-  now = getTimeString()
-  sendData(now, 1)
-  time.sleep(0.5)
-  sendData(now, 2)
-  time.sleep(getDelay()) # get an exact delay to avoid time drift
+  if connected == 1:
+    now = getTimeString()
+    sendData(now, 1)
+    time.sleep(getRealDelay(0.5)) # get an exact delay to avoid time drift
+    sendData(now, 2)
+    time.sleep(getRealDelay(0.5))
+  else:
+    reconnectNixie()
