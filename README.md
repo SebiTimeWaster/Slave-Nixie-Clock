@@ -33,7 +33,7 @@ Open "Slave_Nixie_Clock/Slave_Nixie_Clock.ino" in your Arduino IDE of choice and
 
 In "/examples" you will find an example Python script to control the Nixie Clock (It sends the computer time to the Nixie Clock). It comes without any guarantee (It was only tested under OS X), if you want to create your own scripts on top of it please don't ask me for support.
 
-In "/45 degree Stands" you will find a printable 3D model for stands to angle the clock at 45°, which makes it much more readable when it is standing on your desk. Just print the .stl file on your 3D printer of choice.
+In "/45 degree Stands" you will find a printable 3D model for stands to angle the clock at 45°, which makes it much more readable when it is standing on your desk. Just print the .stl file on your 3D printer of choice. [The stands on Thingiverse](http://www.thingiverse.com/thing:2232491)
 
 ![Nixie Clock Stand](https://github.com/SebiTimeWaster/Slave-Nixie-Clock/blob/master/Nixie_Stand.png)
 
