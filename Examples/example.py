@@ -91,6 +91,8 @@ def sendColorAnimation(speed):
 def getRealDelay(desiredDelay):
   global timeBase
   timeBase += desiredDelay
+  if timeBase - time.time() > 11 or timeBase - time.time() < -11: # when time base deviated too much (i.e. because of sleep mode or user set new time) reset time base
+    setTimeBase();
   return max(timeBase - time.time(), 0) # if negative say 0 to catch up to real time
 
 def setTimeBase():
